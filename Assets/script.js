@@ -4,6 +4,7 @@
 
 var timeBlockEl = $('.time-block').text();
 var buttonEl = $('.btn');
+var storageData = [];
 // var description = $(('.description').select);
 // var inputEl = $(('textarea').value);
 
@@ -31,12 +32,15 @@ $(function () {
     //    alert(this.description);
     // });
     
-// $(function() {
-//     $("saveBtn").onclick(function() {
-//         var time_block=$ ("#discription");
-//         localStorage.setItem("getvalue", time_block);
-//     })
-// });
+$(function() {
+    $(".saveBtn").click(function() {
+        var description=$("#ten").val();
+
+        localStorage.setItem("getvalue", description);
+        console.log(description);
+    })
+});
+
 
 // $("#saveBtn").click(function(){
 //     return this.textareaEl;
@@ -74,13 +78,15 @@ $(function () {
 
 
         // this is the repeating time-blocks
-    var time_block = '<div id="hour-10" class="row time-block future"><div class="col-2 col-md-1 hour text-center py-3">00AM</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>';
+    // var time_block = '<div id="hour-10" class="row time-block future"><div class="col-2 col-md-1 hour text-center py-3">00AM</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>';
     
     
     console.log(hour);
 
     for(let i = 0; i <= 11; i++){
-
+        var hourId = '<div id="hour-' + i + '" class="row time-block future">';
+        var timeBlockElement = '<div class="col-2 col-md-1 hour text-center py-3">00AM</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>'
+        var time_block = hourId + timeBlockElement;
         var hour = dayjs().format('h A');
         $("#time").append(time_block)[i];
         // time_block = time_block + i;

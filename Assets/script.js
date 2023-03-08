@@ -1,20 +1,12 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var textareaEl = $('.discription');
-var buttonEl = $('#saveBtn');
+
 var hour = $('hour-10');
+var buttonEl = $('.btn');
+var description = $(('.description').select);
+// var inputEl = $(('textarea').value);
 
-
-var today = dayjs();
-$('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
-
-// console.log(textareaEl);
-// console.log('#discription');
-
-// saveBtn.addEventListener('click', function(){
-//     localStorage.setItem('#time-block', discrip);
-// });
 
 // $(function() {
 //     $("saveBtn").onclick(function() {
@@ -23,27 +15,46 @@ $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 //     })
 // });
 
+// $("#saveBtn").click(function(){
+//     return this.textareaEl;
+// });
 
+// function getTextareaValue() {
 
+//     var textarea = document.getElementById('textarea');
+//     var value = textarea.value;
+//     window.alert(value);
 
-localStorage.setItem(JSON.stringify(hour), JSON.stringify(textareaEl));
+// }
 
-function savetextToStorage(textareaEl) {
-    localStorage.setItem('.discription', JSON.stringify(textareaEl));
-  }
-  textareaEl.on('click', '.saveBtn', savetextToStorage);
 
 $(function () {
 
-    // $('#saveBtn').on('click', function() {
-    //     localStorage.setItem(JSON.stringify(hour), JSON.stringify(textareaEl));
-    // });
-    
-
-
-
    
 
+    // $('#saveBtn').on('click', function() {
+    //     localStorage.setItem(JSON.stringify(this.hour), JSON.stringify(this.textareaEl));
+    // });
+
+    // buttonEl.on('click', function() {
+        
+    //    alert(this.description);
+    // });
+
+    
+    $('button').click(function(){
+        var textarea = $('textarea').val();
+        var value = textarea.value;
+        
+    
+        alert(value);
+        
+        // $(console.log(this.description));
+
+    });
+
+    
+    
 
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
@@ -52,16 +63,27 @@ $(function () {
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
     //
+
+
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
     //
+
+
+
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
+
+    var today = dayjs();
+    $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
+
   });
+
+
   

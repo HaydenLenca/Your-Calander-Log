@@ -4,33 +4,46 @@
 
 var timeBlockEl = $('.time-block').text();
 var buttonEl = $('.btn');
-var storageData = [];
-// var description = $(('.description').select);
-// var inputEl = $(('textarea').value);
+
+var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM','06PM'];
+
+  
 
 
 
 
-$(function () {
-
-   
-    $('button').click(function(){
-    
-        console.log(this.timeBlockEl);
-        
-        // $(console.log(this.description));
-
-    });
-
-    
 $(function() {
-    $(".saveBtn").click(function() {
-        var description=$("#ten").val();
 
-        localStorage.setItem("getvalue", description);
-        console.log(description);
+
+    
+    $('button').click(function() {
+    
+        var textData = [];
+
+
+        var localSave_0=$('#localSave_0').val();
+        var localSave_1=$('#localSave_1').val();
+        var localSave_2=$('#localSave_2').val();
+        var localSave_3=$('#localSave_3').val();
+        var localSave_4=$('#localSave_4').val();
+        var localSave_5=$('#localSave_5').val();
+        var localSave_6=$('#localSave_6').val();
+        var localSave_7=$('#localSave_7').val();
+        var localSave_8=$('#localSave_8').val();
+        var localSave_9=$('#localSave_9').val();
+        var localSave_10=$('#localSave_10').val();
+        var localSave_11=$('#localSave_11').val();
+
+        textData.push(localSave_0, localSave_1, localSave_2, localSave_3, localSave_4, localSave_5, localSave_6, localSave_7, localSave_8, localSave_9, localSave_10, localSave_11);
+
+        
+
+        // localStorage.setItem('count', storageData);
+        localStorage.setItem('time-block', textData);
+        // localStorage.getItem('time-block', textData);
     })
 });
+
 
 
     // TODO: Add a listener for click events on the save button. This code should
@@ -54,21 +67,59 @@ $(function() {
     // var hour = hourtime % 2 === 1;
     // $('#4a').text(hour + ", because it's currently week " + hourtime);
     
+$(function() {
 
+    // this is hopfully the changing element 
+    var timeChange = "";
 
-        // this is the repeating time-blocks
-    // var time_block = '<div id="hour-10" class="row time-block future"><div class="col-2 col-md-1 hour text-center py-3">00AM</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>';
+    for(let i = 0; i < hourCount.length; i++){
+        
+
+        var timeZone = dayjs().format('hhA');
+        
     
 
-    for(let i = 0; i <= 11; i++){
-        var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM','06PM'];
-        var hourId = '<div id="hour-' + i + '" class="row time-block future-' + i + '">';
-        var timeBlockElement = '<div class="col-2 col-md-1 hour text-center py-3">' + hourCount[i] + '</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>'
+        newTime = JSON.stringify(timeZone);
+        // console.log(hour);
+
+        // var past = (dayjs().format('hhA')) - 1;
+        // console.log(past);
+        // working to set a past present and future time block 
+        // console.log(past);
+        // console.log(present);
+
+        if (timeZone === hourCount[i]){
+                timeChange = "present";
+            }
+             else if (newTime[0] = hourCount[i]) {
+                timeChange = "future";
+            } 
+            else {
+                    timeChange = "past";
+                };
+                console.log(newTime);
+
+        // if (dayjs().format('hhA') == hourCount[i]){
+        //     timeChange = "future";
+        // };
+
+
+        // if else (dayjs().format('hhA') === present) {
+        //     timeChange = "present";
+        // };
+
+        var hourId = '<div class="row time-block ' + timeChange + '">';
+        var timeBlockElement = '<div id="hour_' + hourCount[i] + '" class="col-2 col-md-1 hour text-center py-3">' + hourCount[i] + '</div><textarea class="col-8 col-md-10 description" rows="3" id=localSave_' + i + '></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>';
+
         var time_block = hourId + timeBlockElement;
-        
+
         $("#info-block").append(time_block)[i];    
     };
     // end of the repeating time-blocks
+    
+    
+
+        
    
     
 
@@ -81,13 +132,9 @@ $(function() {
 
 
     // TODO: Add code to display the current date in the header of the page.
+    
 
     var today = dayjs();
     $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 
   });
-
-
-
-
-  

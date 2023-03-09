@@ -22,15 +22,6 @@ $(function () {
 
     });
 
-
-    // $('#saveBtn').on('click', function() {
-    //     localStorage.setItem(JSON.stringify(this.hour), JSON.stringify(this.textareaEl));
-    // });
-
-    // buttonEl.on('click', function() {
-        
-    //    alert(this.description);
-    // });
     
 $(function() {
     $(".saveBtn").click(function() {
@@ -41,18 +32,6 @@ $(function() {
     })
 });
 
-
-// $("#saveBtn").click(function(){
-//     return this.textareaEl;
-// });
-
-// function getTextareaValue() {
-
-//     var textarea = document.getElementById('textarea');
-//     var value = textarea.value;
-//     window.alert(value);
-
-// }
 
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
@@ -80,22 +59,15 @@ $(function() {
         // this is the repeating time-blocks
     // var time_block = '<div id="hour-10" class="row time-block future"><div class="col-2 col-md-1 hour text-center py-3">00AM</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>';
     
-    
-    console.log(hour);
 
     for(let i = 0; i <= 11; i++){
-        var hourId = '<div id="hour-' + i + '" class="row time-block future">';
-        var timeBlockElement = '<div class="col-2 col-md-1 hour text-center py-3">00AM</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>'
+        var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM','06PM'];
+        var hourId = '<div id="hour-' + i + '" class="row time-block future-' + i + '">';
+        var timeBlockElement = '<div class="col-2 col-md-1 hour text-center py-3">' + hourCount[i] + '</div><textarea class="col-8 col-md-10 description" rows="3"></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>'
         var time_block = hourId + timeBlockElement;
-        var hour = dayjs().format('h A');
-        $("#time").append(time_block)[i];
-        // time_block = time_block + i;
-        // console.log(i);
-        // console.log(time_block);
-        $('.hour').text(hour);
-        console.log(hour);
         
-    }
+        $("#info-block").append(time_block)[i];    
+    };
     // end of the repeating time-blocks
    
     

@@ -2,41 +2,46 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM','06PM'];
-
-  
-
+var currentDay = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
 
 
 
-   
+
+
+
+
+
+
+var today = dayjs();
+    $('#currentDay').text(currentDay);
+
+
+
+
     
 
  $(function() {
+    var hour9 = dayjs().hour(9);
+    var hour10 = dayjs().hour(10);
+    var hour11 = dayjs().hour(11);
+    var hour12 = dayjs().hour(12);
+    var hour13 = dayjs().hour(13);
+    var hour14 = dayjs().hour(14);
+    var hour15 = dayjs().hour(15);
+    var hour16 = dayjs().hour(16);
+    var hour17 = dayjs().hour(17);
+    var hour18 = dayjs().hour(18);
     
-    var today = dayjs();
-    $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 
     $(".saveBtn").click(function() {
 
-        var textData = [];
-        var localSave_0=$("#localSave_0").val();
-        var localSave_1=$('#localSave_1').val();
-        var localSave_2=$('#localSave_2').val();
-        var localSave_3=$('#localSave_3').val();
-        var localSave_4=$('#localSave_4').val();
-        var localSave_5=$('#localSave_5').val();
-        var localSave_6=$('#localSave_6').val();
-        var localSave_7=$('#localSave_7').val();
-        var localSave_8=$('#localSave_8').val();
-        var localSave_9=$('#localSave_9').val();
-        var localSave_10=$('#localSave_10').val();
-        var localSave_11=$('#localSave_11').val();
+        
 
 
-        textData.push(localSave_0, localSave_1, localSave_2, localSave_3, localSave_4, localSave_5, localSave_6, localSave_7, localSave_8, localSave_9, localSave_10, localSave_11);
+        // textData.push(localSave_0, localSave_1, localSave_2, localSave_3, localSave_4, localSave_5, localSave_6, localSave_7, localSave_8, localSave_9, localSave_10, localSave_11);
     
-        localStorage.setItem("time-block", textData);
-        console.log(localSave_0);
+        localStorage.setItem("hour9", textData);
+        console.log(hour9);
     })
 });
     
@@ -56,11 +61,10 @@ var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM',
     // current hour in 24-hour time?
     //
 
+
     
-    // var hourtime = today.diff(beginningOfDay, 'day');
-    // var hour = hourtime % 2 === 1;
-    // $('#4a').text(hour + ", because it's currently week " + hourtime);
-    
+
+
 $(function() {
 
     var timeCount = [0, 1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12];
@@ -97,24 +101,34 @@ $(function() {
         $("#info-block").append(time_block)[i];    
     };
     // end of the repeating time-blocks
+
+  
+
     
-    
-
-        
-   
-    
-
-
-
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
 
-
     // TODO: Add code to display the current date in the header of the page.
-    
-
-    
 
   });
+
+
+// var auditTime = function () {
+//         currentTime = moment().format("hh:mm:ss");
+    
+//     if (moment().isBetween(time06AM, time07AM)) {
+//         $("#timeblock14").addClass("present");
+//     }
+//     else if (moment().isAfter(hour15)) {
+//         $("#timeblock14").addClass("past");
+//     }
+//     else {
+//         $("#timeblock14").addClass("future");
+//     }
+//   };
+
+
+
+//   auditTime();

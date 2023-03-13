@@ -2,47 +2,52 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM','06PM'];
-var currentDay = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
-
-
-
-
-
-
-
-
+var currentDay = moment().format('dddd, MMMM D YYYY, h:mm:ss a');
 
 var today = dayjs();
     $('#currentDay').text(currentDay);
 
+var hour9 = moment().hour(9);
+var hour10 = moment().hour(10);
+var hour11 = moment().hour(11);
+var hour12 = moment().hour(12);
+var hour13 = moment().hour(13);
+var hour14 = moment().hour(14);
+var hour15 = moment().hour(15);
+var hour16 = moment().hour(16);
+var hour17 = moment().hour(17);
+var hour18 = moment().hour(18);
 
+
+
+
+
+
+
+$("button").on("click", function () {
+            var save0 = $("#localSave_0").val();
+            localStorage.setItem('#0', JSON.stringify(save0));
+            console.log(save0);
+        });
 
 
     
 
  $(function() {
-    var hour9 = dayjs().hour(9);
-    var hour10 = dayjs().hour(10);
-    var hour11 = dayjs().hour(11);
-    var hour12 = dayjs().hour(12);
-    var hour13 = dayjs().hour(13);
-    var hour14 = dayjs().hour(14);
-    var hour15 = dayjs().hour(15);
-    var hour16 = dayjs().hour(16);
-    var hour17 = dayjs().hour(17);
-    var hour18 = dayjs().hour(18);
     
 
     $(".saveBtn").click(function() {
 
         
-
+        // var localSave_0 = JSON.parse(localStorage.getItem('#localSave_0')) || "";
 
         // textData.push(localSave_0, localSave_1, localSave_2, localSave_3, localSave_4, localSave_5, localSave_6, localSave_7, localSave_8, localSave_9, localSave_10, localSave_11);
-    
+        
         localStorage.setItem("hour9", textData);
-        console.log(hour9);
-    })
+        
+
+        
+});
 });
     
     // TODO: Add a listener for click events on the save button. This code should
@@ -73,31 +78,51 @@ $(function() {
 
     for(let i = 0; i < hourCount.length; i++){
         
-        var timeZone = dayjs().format('hhA');
-        // newCount = timeZone + ' ' + timeCount[i];
-        // oldCount = timeCount[i];
-        // console.log(newCount);
-        
-
-        newTime = JSON.stringify(timeZone);
-
-        
+        var timeZone = moment().format('hhA');
        
-        if (timeZone === hourCount[i]){
-                timeChange = "present";
-            }
-             else if (hourCount.length < hourCount[i]){
-                timeChange = "future";
-            } 
-            else {
-                    timeChange = "past";
-                };
+        
 
         var hourId = '<div id=' + timeCount[i] + ' class="row time-block ' + timeChange + '">';
         var timeBlockElement = '<div id="hour_' + hourCount[i] + '" class="col-2 col-md-1 hour text-center py-3">' + hourCount[i] + '</div><textarea class="col-8 col-md-10 description" rows="3" id=localSave_' + i + '></textarea><button class="btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button></div>';
 
-        var time_block = hourId + timeBlockElement;
 
+        if (moment().isBetween(hour9, hour10)) {
+            $("#localSave_0").addClass("present");
+        }
+        else if (moment().isAfter(hour10)) {
+            $("#localSave_0").addClass("past");
+        }
+        else {
+            $("#localSave_0").addClass("future");
+        }
+
+        if (moment().isBetween(hour10, hour11)) {
+            $("#localSave_1").addClass("present");
+        }
+        else if (moment().isAfter(hour10)) {
+            $("#localSave_1").addClass("past");
+        }
+        else {
+            $("#localSave_1").addClass("future");
+        }
+
+        if (moment().isBetween(hour11, hour12)) {
+            $("#localSave_2").addClass("present");
+        }
+        else if (moment().isAfter(hour10)) {
+            $("#localSave_2").addClass("past");
+        }
+        else {
+            $("#localSave_2").addClass("future");
+        }
+
+        // if (timeZone === hourCount[i]){
+        //         timeChange = "present";
+        //     } else {
+        //             timeChange = "past";
+        //         };
+
+        var time_block = hourId + timeBlockElement;
         $("#info-block").append(time_block)[i];    
     };
     // end of the repeating time-blocks
@@ -115,20 +140,3 @@ $(function() {
   });
 
 
-// var auditTime = function () {
-//         currentTime = moment().format("hh:mm:ss");
-    
-//     if (moment().isBetween(time06AM, time07AM)) {
-//         $("#timeblock14").addClass("present");
-//     }
-//     else if (moment().isAfter(hour15)) {
-//         $("#timeblock14").addClass("past");
-//     }
-//     else {
-//         $("#timeblock14").addClass("future");
-//     }
-//   };
-
-
-
-//   auditTime();

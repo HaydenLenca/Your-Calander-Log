@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM','06PM'];
+var hourCount = ['06AM','07AM','08AM','09AM','10AM','11AM','12PM','01PM','02PM','03PM','04PM','05PM', '06PM', 'CLOSED NOTE'];
 var today = moment().format('dddd, MMMM D YYYY, h:mm:ss a');
 var hour6 = moment().hour(6);
 var hour7 = moment().hour(7);
@@ -17,43 +17,38 @@ var hour16 = moment().hour(16);
 var hour17 = moment().hour(17);
 var hour18 = moment().hour(18);
 var hour19 = moment().hour(19);
-
-
+// TODO: Add code to display the current date in the header of the page. 
 $('#currentDay').text(today);
-
- 
-    
+   
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
     // function? How can DOM traversal be used to get the "hour-x" id of the
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
-    //
-
-    $(function() {
-            $("button").on("click", function () {
-                var save0 = $(this).sibling("#localSave_0").val();
-                localStorage.setItem('#0', JSON.stringify(save0));
-                console.log(save0);
+$("#localSave_0").on("click", ".fa-save", function () {
+                var hour_06AM = $("#localSave_0").val();
+                localStorage.setItem('time-block', JSON.stringify(hour_06AM));
+                console.log(hour_06AM);
             });
-});
+            
+//     $(function(event) {
+//         preventDefault(event);
+
+            
+            
+// });
 
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
-    //
-
-
-    
-
 
 $(function() {
 
-    var timeCount = [0, 1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12];
-    // this is hopfully the changing element 
+    var timeCount = [0, 1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12, 13];
+    // this is the changing element 
     var timeChange = "";
 
     for(let i = 0; i < hourCount.length; i++){
@@ -205,7 +200,7 @@ $(function() {
     // attribute of each time-block be used to do this?
     //
 
-    // TODO: Add code to display the current date in the header of the page.
+    
 
   });
 

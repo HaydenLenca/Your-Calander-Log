@@ -19,9 +19,9 @@ N/A
 
 ## Links
 
-[Git Hub](https://github.com/HaydenLenca/My-Password-Generator)
+[Git Hub](https://github.com/HaydenLenca/Your-Calander-Log)
 
-[Deployed Site](https://haydenlenca.github.io/My-Password-Generator/)
+[Deployed Site](https://haydenlenca.github.io/Your-Calander-Log/)
 
 ## License
 
